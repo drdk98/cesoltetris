@@ -1,26 +1,32 @@
 import pygame
 
-an, al = 10, 20
-TILE= 45
-GAME_RES = 800, 600
-FPS=60
 
-pygame.init()
-game_sc = pygame.display.set_mode(GAME_RES)
-clock = pygame.Clock()
+colors = [
+    (0, 0, 0),
+    (120, 37, 179),
+    (100, 179, 179),
+    (80, 34, 22),
+    (80, 134, 22),
+    (180, 34, 22),
+    (180, 34, 122),
+]
 
-#creando la reticula con ancho 10 y altura 20
-grid = [pugame.rect(x * TILE, y * TILE, TILE, TILE) for x in range(an) for y in range(al)]
 
-while True:
-  game_sc.fill(pygame.Color('black'))
-  
-  for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-    exit()
-  
-  #dibujando la reticula
-  [pygame.draw.rect(game_sc, (40, 40, 40), i_rect, 1) for i_rect in grid]                                           
-    
-  pygame.display.flip()
-  clock.tick(FPS)
+class Figure:
+    x = 0
+    y = 0
+
+#creando las figuras en base a una matriz de coordenadas con origen en 0
+# 0  1  2  3
+# 4  5  6  7  
+# 8  9 10 11
+#12 13 14 15
+    figures = [
+        [[1, 5, 9, 13], [4, 5, 6, 7]],
+        [[4, 5, 9, 10], [2, 6, 5, 9]],
+        [[6, 7, 9, 10], [1, 5, 6, 10]],
+        [[1, 2, 5, 9], [0, 4, 5, 6], [1, 5, 9, 8], [4, 5, 6, 10]],
+        [[1, 2, 6, 10], [5, 6, 7, 9], [2, 6, 10, 11], [3, 5, 6, 7]],
+        [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]],
+        [[1, 2, 5, 6]],
+    ]
